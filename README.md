@@ -12,3 +12,13 @@ Given the class [`LeapYear`](https://github.com/IdelsTak/data-flow-testing/blob/
 - Once all the years have been checked and stored in the array, the code traverses the unsorted `numberOfYears` array and sorts it in ascending order.
 - Finally, the sorted array is returned.
 
+```mermaid
+flowchart TD
+    A((start)) --> B((Validate year range))
+    B -- Valid --> C((Iterate through years))
+    C -- Leap year --> D((Store in array))
+    D --> E((Continue iterating))
+    C -- Not a leap year --> E((Continue iterating))
+    B -- Invalid --> F((Throw exception))
+```
+
