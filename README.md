@@ -13,12 +13,14 @@ Given the class [`LeapYear`](https://github.com/IdelsTak/data-flow-testing/blob/
 - Finally, the sorted array is returned.
 
 ```mermaid
-flowchart TD
-    A((start)) --> B((Validate year range))
-    B -- Valid --> C((Iterate through years))
-    C -- Leap year --> D((Store in array))
-    D --> E((Continue iterating))
-    C -- Not a leap year --> E((Continue iterating))
-    B -- Invalid --> F((Throw exception))
+graph TD
+A[LeapYearChecker] --> B(getLeapYears)
+B --> C{year <= endYear}
+C --> D{isLeapYear}
+D --> |yes| E(add year to leapYears)
+E --> C
+D --> |no| C
+C --> F(convert leapYears list to int array)
+F --> G(return int array)
 ```
 
